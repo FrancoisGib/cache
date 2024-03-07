@@ -1,6 +1,10 @@
+all:
+	gcc -c lib.c
+	make cache
+
 cache:
 	gcc -c cache.c
-	gcc -o cache cache.o
+	gcc -o cache cache.o lib.o -lm
 
 clean:
-	rm cache cache.o
+	rm -f *.o cache lib input
