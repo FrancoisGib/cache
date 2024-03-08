@@ -16,7 +16,7 @@
 #define FULLY_ASSOCIATIVE_MAPPING 1
 #define SET_ASSOCIATIVE_MAPPING 2
 
-#define NB_ITERATIONS 100
+#define NB_ITERATIONS 10
 
 typedef struct {
     int tag;
