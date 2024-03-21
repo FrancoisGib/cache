@@ -7,7 +7,7 @@
 #include <string.h>
 #include "lib.h"
 
-#define RAM_SIZE 1024
+#define RAM_SIZE 2048
 
 #define RAM_ACCESS_TIME 100
 #define CACHE_ACCESS_TIME 1
@@ -16,7 +16,7 @@
 #define FULLY_ASSOCIATIVE_MAPPING 1
 #define SET_ASSOCIATIVE_MAPPING 2
 
-#define NB_ITERATIONS 10
+#define NB_ITERATIONS 100
 
 typedef struct {
     int tag;
