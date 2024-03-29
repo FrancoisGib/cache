@@ -21,3 +21,37 @@ char* dec_to_binary(int number) {
     }   
     return str;
 }
+
+void gen_input_file(int nb_iterations, int number_size) {
+    int max_address = (int)pow(2, number_size);
+    FILE* output = fopen("input", "w");
+    srand(time(NULL));
+    int8_t nb_max_size = unpow(10, max_address);
+    char str[nb_max_size + 1];
+    for (int i = 0; i < nb_iterations; i++) {
+        int value = rand() % max_address;
+        value = value < 0 ? -value : value;
+        int8_t size = unpow(10, value);
+        sprintf(str, "%d\n", value);
+        fwrite(str, size + 1, 1, output);
+        memset(str, 0, size + 1);
+    }
+    fclose(output);
+}
+
+addresses_t* read_input(int nb_iterations) {
+    FILE* input = fopen("input", "r");
+    int size;
+    int value;
+    addresses_t* addresses = (addresses_t*)malloc(sizeof(addresses_t));
+    addresses->nb_addresses = nb_iterations;
+    addresses->addresses = (int*)malloc(sizeof(int) * addresses->nb_addresses);
+    int i = 0;
+    while ((size = fscanf(input, "%d", &value)) != -1) {
+        printf("%d\n", value);
+        addresses->addresses[i] = value;
+        i++;
+    }
+    fclose(input);
+    return addresses;
+}
