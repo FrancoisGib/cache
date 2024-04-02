@@ -39,17 +39,15 @@ void gen_input_file(int nb_iterations, int number_size) {
     fclose(output);
 }
 
-addresses_t* read_input(int nb_iterations) {
+int* read_input(int nb_iterations) {
     FILE* input = fopen("input", "r");
     int size;
     int value;
-    addresses_t* addresses = (addresses_t*)malloc(sizeof(addresses_t));
-    addresses->nb_addresses = nb_iterations;
-    addresses->addresses = (int*)malloc(sizeof(int) * addresses->nb_addresses);
+    int* addresses = (int*)malloc(sizeof(int) * nb_iterations);
     int i = 0;
     while ((size = fscanf(input, "%d", &value)) != -1) {
         printf("%d\n", value);
-        addresses->addresses[i] = value;
+        addresses[i] = value;
         i++;
     }
     fclose(input);
